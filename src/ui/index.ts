@@ -3,5 +3,6 @@ import { Media } from "./media";
 import { Color } from "./colors";
 import { Spaces } from "./spaces";
 import { Typography } from "./typography";
+import { Reset } from "./reset";
 
-export { GlobalStyles, Media, Color, Spaces, Typography };
+export { GlobalStyles, Media, Color, Spaces, Typography, Reset };

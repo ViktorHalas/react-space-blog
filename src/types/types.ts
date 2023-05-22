@@ -19,4 +19,6 @@ interface Launch {
 interface Event {
     id:	string;
     provider:	string;
-}
+};
+
+export type Theme = "dark" | "light";

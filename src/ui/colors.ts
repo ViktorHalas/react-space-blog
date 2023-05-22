@@ -9,4 +9,9 @@ export enum Color {
     WHITE = "#FFFFFF",
     WHITE_TRANSPARENT = "rgba(255, 255, 255, 0.1)",
     GREY = "#F3F3F3",
+    PRIMARY_TEXT = "var(--primary-text)",
+    PRIMARY_BG = "var(--primary-bg)",
+    SECONDARY_BG = "var(--secondary-bg)",
+    BLOCK_BG = "var(--block-bg)",
+
 }

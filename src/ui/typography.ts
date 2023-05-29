@@ -5,7 +5,7 @@ const H1 = css`
   font-weight: 700;
   font-size: 56px;
   line-height: 80px;
-  ${Media.Sm} {
+  ${Media.SM} {
     font-size: 32px;
     line-height: 48px;
   }
@@ -15,7 +15,7 @@ const H2 = css`
   font-weight: 700;
   font-size: 32px;
   line-height: 44px;
-  ${Media.Sm} {
+  ${Media.SM} {
     font-size: 24px;
     line-height: 36px;
   }

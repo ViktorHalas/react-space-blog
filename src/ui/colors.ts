@@ -7,11 +7,13 @@ export enum Color {
     SECONDARY_EXTRALIGHT = "rgba(49, 48, 55, 0.1)",
     ERROR = "#FD3419",
     WHITE = "#FFFFFF",
-    WHITE_TRANSPARENT = "rgba(255, 255, 255, 0.1)",
+    BLACK_MEDIUM = "#404040",
+    BLACK_LIGHT = "#2D2D2D",
+    BLACK_EXTRALIGHT = "#A0A0A0",
     GREY = "#F3F3F3",
     PRIMARY_TEXT = "var(--primary-text)",
     PRIMARY_BG = "var(--primary-bg)",
     SECONDARY_BG = "var(--secondary-bg)",
+    SECONDARY_TEXT = "var(--secondary-text)",
     BLOCK_BG = "var(--block-bg)",
-
 }

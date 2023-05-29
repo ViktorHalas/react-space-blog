@@ -3,38 +3,38 @@ import { Media } from "ui";
 
 const SP1 = css`
   margin: 0 0 72px 0;
-  ${Media.Sm} {
+  ${Media.SM} {
     margin: 0 0 56px 0;
   }
 `;
 
 const SP2 = css`
   margin: 0 0 64px 0;
-  ${Media.Md} {
+  ${Media.MD} {
     margin: 0 0 54px 0;
   }
-  ${Media.Sm} {
+  ${Media.SM} {
     margin: 0 0 48px 0;
   }
 `;
 
 const SP3 = css`
   margin: 0 0 48px 0;
-  ${Media.Sm} {
+  ${Media.SM} {
     margin: 0 0 36px 0;
   }
 `;
 
 const SP4 = css`
   margin: 0 0 40px 0;
-  ${Media.Sm} {
+  ${Media.SM} {
     margin: 0 0 32px 0;
   }
 `;
 
 const SP5 = css`
   margin: 0 0 32px 0;
-  ${Media.Sm} {
+  ${Media.SM} {
     margin: 0 0 28px 0;
   }
 `;

@@ -3,8 +3,8 @@ import { Color, Media, Typography } from "ui";
 
 const StyledFooter = styled.div`
   display: flex;
-  grid-row: -1;
   justify-content: space-between;
+  margin-top: auto;
   padding: 33px;
   border-top:1px solid ${Color.GREY} ;
   ${Media.SM}{

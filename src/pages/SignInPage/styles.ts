@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Spaces, Typography } from "ui";
 
-const SignUpPageContainer = styled.div`
+const SignInPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   ${Spaces.SP1};
@@ -26,4 +26,4 @@ const Title = styled.h1`
   color: ${Color.PRIMARY_TEXT};
 `;
 
-export {RouterLink, Title, SignUpPageContainer};
+export {RouterLink, Title, SignInPageContainer};

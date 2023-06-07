@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Spaces, Typography } from "ui";
 
-const SignUpPageContainer = styled.div`
+const ResetPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   ${Spaces.SP1};
 `;
 
-const RouterLink = styled(Link)`
+const RouterLink = styled.div`
   display: block;
   ${Spaces.SP5};
   color: ${Color.PRIMARY_TEXT};
@@ -26,4 +25,4 @@ const Title = styled.h1`
   color: ${Color.PRIMARY_TEXT};
 `;
 
-export {RouterLink, Title, SignUpPageContainer};
+export {RouterLink, Title, ResetPageContainer};

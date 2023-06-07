@@ -9,13 +9,14 @@ import { Color } from "./colors";
 export const GlobalStyles = createGlobalStyle`
   ${Reset};
   body{
+    height:100%;
     background-color: ${Color.PRIMARY_BG};
   }
 
   html {
+    height:100%;
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    height:100%;
   };
 
   html[theme=dark] {

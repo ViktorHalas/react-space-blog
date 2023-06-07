@@ -1,14 +1,14 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ROUTE } from "router";
 import { fetchSignInUser, useAppDispatch } from "store";
-import { Button, Label, RouterLink, Form, Input, InputGroup, Text } from "./styles";
+import { Button, Label, RouterLink, Form, Input, InputGroup, Text, ResetPassword } from "./styles";
 
 interface LoginData {
   email: string;
   password: string;
 }
 
-export const SignUpForm = () => {
+export const SignInForm = () => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit, reset } = useForm<LoginData>({ mode: "onSubmit" });
   const onSubmit: SubmitHandler<LoginData> = ({ email, password }) => {
@@ -41,10 +41,11 @@ export const SignUpForm = () => {
           />
         </Label>
       </InputGroup>
-      <Button type="submit">Sign up</Button>
+      <ResetPassword to={`${ROUTE.HOME + ROUTE.RESET_PASSWORD}`}>Forgot password?</ResetPassword>
+      <Button type="submit">Sign in</Button>
       <Text>
         Don’t have an account?
-        <RouterLink to={`${ROUTE.HOME + ROUTE.SING_UP}`}>Sign Up</RouterLink>
+        <RouterLink to={`${ROUTE.HOME + ROUTE.SIGN_UP}`}> Sign Up</RouterLink>
       </Text>
     </Form>
   );

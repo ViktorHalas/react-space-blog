@@ -39,7 +39,7 @@ export interface SelectOption {
 }
 
 export interface RequestOption {
-    blog?:string | undefined;
+    blogType?:string | undefined;
     id?:string | undefined ;
     sort?:string;
     limit?:string;

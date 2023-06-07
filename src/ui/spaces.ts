@@ -10,7 +10,7 @@ const SP1 = css`
 
 const SP2 = css`
   margin: 0 0 64px 0;
-  ${Media.MD} {
+  ${Media.LG} {
     margin: 0 0 54px 0;
   }
   ${Media.SM} {

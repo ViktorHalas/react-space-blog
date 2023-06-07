@@ -3,8 +3,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
-  updatePassword,
-  User,
 } from "firebase/auth";
 import { auth } from "services/firebase/firebase";
 import { FirebaseErrorCode, FirebaseErrorMessage, getFBErrorMessage } from "utils";
@@ -38,9 +36,8 @@ interface SignInFirebaseAuth {
   password: string;
 }
 
-interface SetNewPassword {
-  user: User;
-  newPassword: string;
+interface ResetPassword {
+  email:string;
 }
 const initialState: UserState = {
   name: "",
@@ -85,34 +82,18 @@ export const fetchSignInUser = createAsyncThunk<
   }
 });
 
-export const resetPassword = createAsyncThunk<
+export const fetchResetPassword = createAsyncThunk<
   void,
-  { userEmail: string },
+  ResetPassword,
   { rejectValue: FirebaseErrorMessage }
->("user/resetPassword", async ({ userEmail }, { rejectWithValue }) => {
+>("user/resetPassword", async ({ email }, { rejectWithValue }) => {
   try {
-    await sendPasswordResetEmail(auth, userEmail);
+    await sendPasswordResetEmail(auth, email);
   } catch (error) {
     const firebaseError = error as { code: FirebaseErrorCode };
     return rejectWithValue(getFBErrorMessage(firebaseError.code));
   }
 });
-
-// export const setNewPassword = createAsyncThunk<
-//   void,
-//   {newPassword :string},
-//   { rejectValue: FirebaseErrorMessage }
-// >("user/setNewPassword", async ({ newPassword }, { rejectWithValue }) => {
-  
-//   try {
-//     const user = auth.currentUser;
-//     await updatePassword(user , newPassword);
-//   } catch (error) {
-//     const firebaseError = error as { code: FirebaseErrorCode };
-//     return rejectWithValue(getFBErrorMessage(firebaseError.code));
-//   }
-// });
-
 
 const userSlice = createSlice({
   name: "user",
@@ -156,6 +137,15 @@ const userSlice = createSlice({
     builder.addCase(fetchSignInUser.rejected, (state, { payload }) => {
       if (payload) {
         state.isAuth = false;
+        state.error = payload;
+      }
+    });
+
+    builder.addCase(fetchResetPassword.fulfilled, (state, { payload }) => {
+      state.error = null;
+    });
+    builder.addCase(fetchResetPassword.rejected, (state, { payload }) => {
+      if (payload) {
         state.error = payload;
       }
     });

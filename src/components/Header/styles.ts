@@ -11,6 +11,7 @@ const StyledHeader = styled.div`
   padding: 28px 32px;
   box-sizing: border-box;
   background-color: ${Color.SECONDARY_BG};
+  z-index: 10;
 `;
 
 const StyledNav = styled.div`

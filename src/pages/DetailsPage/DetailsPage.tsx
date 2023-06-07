@@ -1,27 +1,37 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchBlogById,useAppDispatch, useAppSelector, getDetails } from "store";
+import {
+  fetchBlogById,
+  useAppDispatch,
+  useAppSelector,
+  getDetails,
+  getBlog,
+  fetchHomeBlog,
+} from "store";
 import { DetailsPageContainer, NavigationLink } from "./styles";
-import { BlogContent, Slider } from "components";
+import { BlogContent, SwiperSlider } from "components";
 
 export const DetailsPage = () => {
   const { details, isLoading, error } = useAppSelector(getDetails);
+  const { blog } = useAppSelector(getBlog);
   const dispatch = useAppDispatch();
-  const { blog, id } = useParams();
+  const { blogType, id } = useParams();
   const navigate = useNavigate();
   const handleBackHome = () => {
     navigate(-1);
   };
   useEffect(() => {
-    dispatch(fetchBlogById({ blog: blog, id: id }));
-  }, [dispatch, id, blog]);
+    dispatch(fetchBlogById({ blogType: blogType, id: id }));
+  }, [dispatch, id, blogType]);
+
+  useEffect(() => {
+    dispatch(fetchHomeBlog({ blogType: "articles", sort: "" }));
+  }, [dispatch]);
   return (
     <DetailsPageContainer>
-      <NavigationLink onClick={handleBackHome}>
-        Home <span> / Post {id}</span>
-      </NavigationLink>
+      <NavigationLink onClick={handleBackHome}>Home / Post {id}</NavigationLink>
       <BlogContent details={details} isLoading={isLoading} />
-      <Slider></Slider>
+      <SwiperSlider blog={blog}></SwiperSlider>
     </DetailsPageContainer>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SearchPageContainer, SearchResultsInfo } from "./styles";
+import { SearchPageContainer, Title } from "./styles";
 import { getSearch,fetchSearchBlog, useAppDispatch, useAppSelector } from "store";
 import { Spinner, BlogList } from "components";
 
@@ -25,9 +25,9 @@ export const SearchPage = () => {
   }, [dispatch, searchValue]);
   return (
     <SearchPageContainer>
-      <SearchResultsInfo>
-        "{searchValue ? searchValue : " "}" search results for Articles
-      </SearchResultsInfo>
+      <Title>
+      Search results "{searchValue ? searchValue : " "}"
+      </Title>
       {isLoading ? (
         <Spinner />
       ) : (

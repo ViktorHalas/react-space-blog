@@ -72,7 +72,7 @@ export const HomePage = () => {
     setSelectedButton((prevId) => (prevId = "4"));
   };
   useEffect(() => {
-    dispatch(fetchHomeBlog({ blog: currentBlog, sort: option.value }));
+    dispatch(fetchHomeBlog({ blogType: currentBlog, sort: option.value }));
   }, [dispatch, currentBlog, option.value]);
   return (
     <HomePageContainer>
@@ -91,12 +91,7 @@ export const HomePage = () => {
         selectedButton={selectedButton}
       />
       <CustomSelect options={options} onChange={handleSelect} />
-      <BlogList
-        blog={blog}
-        isLoading={isLoading}
-        sortByDaysValue={sortByDaysValue}
-        currentBlog={currentBlog}
-      />
+      <BlogList blog={blog} isLoading={isLoading} currentBlog={currentBlog} />
     </HomePageContainer>
   );
 };

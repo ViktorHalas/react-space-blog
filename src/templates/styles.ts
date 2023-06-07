@@ -4,9 +4,10 @@ import { Media } from "ui";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 `;
 const MainContainer = styled.div`
+  flex-grow: 3;
   margin: 0 auto 72px auto;
   max-width: 1120px;
   width: 100%;

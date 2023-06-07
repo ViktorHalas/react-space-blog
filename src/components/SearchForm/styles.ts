@@ -12,10 +12,10 @@ const InputWrapper = styled.div`
 `;
 
 const StyledInput = styled.input`
-  align-self: center;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 0 32px;
+  padding: 0 16px;
   font-size: 16px;
   color: ${Color.PRIMARY_TEXT};
   background-color: ${Color.SECONDARY_BG};
@@ -25,9 +25,4 @@ const StyledInput = styled.input`
 const SubmitButton = styled.button`
   visibility: hidden;
 `;
-const SearchIcon = styled.div`
-width: 200px;
-height: 30px;
-background-color: red;
-`;
-export { StyledForm, StyledInput, InputWrapper, SubmitButton,SearchIcon };
+export { StyledForm, StyledInput, InputWrapper, SubmitButton };

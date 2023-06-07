@@ -6,12 +6,14 @@ import { BlogList } from "./BlogList/BlogList";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
 import { Header } from "./Header/Header";
 import { SearchForm } from "./SearchForm/SearchForm";
-import { Slider } from "./Slider/Slider";
 import { SortButtonByDate } from "./SortButtonByDate/SortButtonByDate";
 import { SortButtons } from "./SortButtons/SortButtons";
 import { Spinner } from "./Spinner/Spinner";
 import { TabBlog } from "./TabBlog/TabBlog";
-
+import { SignInForm } from "./SignInForm/SignInForm";
+import { SignUpForm } from "./SignUpForm/SignUpForm";
+import { UserAccount } from "./UserAccount/UserAccount";
+import { SwiperSlider } from "./SwiperSlider/SwiperSlider";
 
 export{
   ToggleButton,
@@ -22,8 +24,12 @@ export{
   CustomSelect, 
   Header, 
   SearchForm, 
-  Slider, 
   SortButtonByDate, 
   SortButtons, 
   Spinner, 
-  TabBlog};
+  TabBlog,
+  SignInForm,
+  SignUpForm,
+  SwiperSlider,
+  UserAccount,
+};

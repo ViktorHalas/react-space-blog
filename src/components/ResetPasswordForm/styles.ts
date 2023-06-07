@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Spaces, Typography } from "ui";
 
 const Button = styled.button`
-  width: 100%;
   padding: 13px;
   ${Spaces.SP6};
+  width: 100%;
   ${Typography.B1};
   color: ${Color.WHITE};
   background-color: ${Color.PRIMARY};
@@ -26,29 +25,21 @@ const Label = styled.label`
   color: ${Color.PRIMARY_TEXT};
 `;
 
-const RouterLink = styled(Link)`
-  text-decoration: none;
-  color:${Color.PRIMARY};
-  transition: 0.3s ease;
-  &:hover{
-    color:${Color.PRIMARY_LIGHT};
-  }
-`;
-
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 624px;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: ${Color.SECONDARY_BG};
-  border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 624px;
+    padding: 40px;
+    background-color: ${Color.SECONDARY_BG};
+    border-radius: 16px;
 `;
 
 const Input = styled.input`
-  width: 100%;
+  ${Spaces.SP3};
   padding: 18px 20px;
+  width: 100%;
   border-radius: 4px;
   border: 1px solid;
   border-color: ${Color.GREY};
@@ -56,18 +47,4 @@ const Input = styled.input`
     border: 1px solid transparent;
   }
 `;
-
-const InputGroup = styled.div`
-  display: grid;
-  grid-template-rows: 1fr;
-  row-gap: 30px;
-  ${Spaces.SP3};
-`;
-
-const Text = styled.span`
-  width: 100%;
-  ${Typography.B1};
-  color:${Color.PRIMARY_TEXT};
-  text-align: center;
-`;
-export {Button, Label, RouterLink, Form, Input, InputGroup, Text};
+export {Button, Label, Form, Input};

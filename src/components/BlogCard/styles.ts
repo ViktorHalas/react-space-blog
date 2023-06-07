@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { Color, Spaces, Typography } from "ui";
+import { Color, Media, Spaces, Typography } from "ui";
 
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   border-radius: 16px;
   overflow: hidden;
 `;
@@ -14,9 +15,14 @@ const BlogImage = styled.img`
 `;
 
 const TextContainer = styled.div`
-  padding: 32px;
   box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  padding: 32px;
   background-color: ${Color.SECONDARY_BG};
+  ${Media.MD}{
+    padding: 24px;
+  }
 `;
 
 const Title = styled.div`
@@ -25,9 +31,9 @@ const Title = styled.div`
 `;
 
 const PublishedAt = styled.p`
+  ${Spaces.SP8};
   ${Typography.S1};
   color:${Color.SECONDARY_TEXT};
-  ${Spaces.SP8};
 `;
 
 

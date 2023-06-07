@@ -4,6 +4,7 @@ import { SelectOption } from "types";
 export const selectStyles: StylesConfig<SelectOption> = {
   container: (base) => ({
     ...base,
+    widtg:"300px",
     outline: "none",
   }),
   control: (base, state) => ({

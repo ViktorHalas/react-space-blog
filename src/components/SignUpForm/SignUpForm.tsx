@@ -55,7 +55,7 @@ export const SignUpForm = () => {
           />
         </Label>
         <Label>
-          "Confirm Password"
+          Confirm Password
           <Input
             placeholder="Confirm password"
             type="password"
@@ -69,7 +69,7 @@ export const SignUpForm = () => {
       <Button type="submit">Sign up</Button>
       <Text>
         Already have an account?{" "}
-        <RouterLink to={`${ROUTE.HOME + ROUTE.SING_IN}`}>Sign In</RouterLink>
+        <RouterLink to={`${ROUTE.HOME + ROUTE.SIGN_IN}`}> Sign In</RouterLink>
       </Text>
     </Form>
   );

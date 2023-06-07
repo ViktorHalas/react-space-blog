@@ -1,6 +1,6 @@
 import React from "react";
 import { BlogInfo } from "types";
-import { BlogContentContainer, Title, Image, Summary, OuterLink } from "./styles";
+import { BlogContentContainer, Title, Image, Summary, OuterLink} from "./styles";
 
 interface BlogContentProps {
   details: BlogInfo;

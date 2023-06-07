@@ -38,6 +38,9 @@ const B1 = css`
   font-weight: 400;
   font-size: 18px;
   line-height: 32px;
+  ${Media.SM}{
+    font-size:16px;
+  }
 `;
 
 const B2 = css`

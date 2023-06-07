@@ -2,10 +2,9 @@ import styled from "styled-components";
 import { Media } from "ui";
 
 const Wrapper = styled.div`
-/* display: grid;
-grid-template-rows: auto 1fr auto; 
-min-height: 100vh;
-width: 100%; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `;
 const MainContainer = styled.div`
   margin: 0 auto 72px auto;

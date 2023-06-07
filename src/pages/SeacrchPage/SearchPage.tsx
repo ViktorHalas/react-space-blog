@@ -4,16 +4,12 @@ import { getSearch,fetchSearchBlog, useAppDispatch, useAppSelector } from "store
 import { Spinner, BlogList } from "components";
 
 export const SearchPage = () => {
-  const [isActiveModal, setIsActiveModal] = useState(false);
   const {
     searchParams: { searchValue },
   } = useAppSelector(getSearch);
   const dispatch = useAppDispatch();
   const { blog, error, isLoading } = useAppSelector(getSearch);
 
-  const handleCloseModal = () => {
-    setIsActiveModal(true);
-  };
 
   useEffect(() => {
     searchValue &&

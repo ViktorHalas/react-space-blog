@@ -7,31 +7,26 @@ import { BlogListContainer, RouterLink } from "./styles";
 
 interface BlogListProps {
   blog: BlogInfo[];
-  isLoading: boolean;
   sortByDaysValue?: number;
   currentBlog: string;
 }
 
-export const BlogList = ({ blog, isLoading, sortByDaysValue, currentBlog }: BlogListProps) => {
+export const BlogList = ({ blog, sortByDaysValue, currentBlog }: BlogListProps) => {
   return (
     <>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <BlogListContainer>
-          {blog.map(({ id, title, imageUrl, publishedAt }) => (
-            <RouterLink
-              key={id}
-              to={generatePath(ROUTE.HOME + ROUTE.DETAILS, {
-                blogType: currentBlog,
-                id: String(id),
-              })}
-            >
-              <BlogCard title={title} imageUrl={imageUrl} publishedAt={publishedAt} />
-            </RouterLink>
-          ))}
-        </BlogListContainer>
-      )}
+      <BlogListContainer>
+        {blog.map(({ id, title, imageUrl, publishedAt }) => (
+          <RouterLink
+            key={id}
+            to={generatePath(ROUTE.HOME + ROUTE.DETAILS, {
+              blogType: currentBlog,
+              id: String(id),
+            })}
+          >
+            <BlogCard title={title} imageUrl={imageUrl} publishedAt={publishedAt} />
+          </RouterLink>
+        ))}
+      </BlogListContainer>
     </>
   );
 };

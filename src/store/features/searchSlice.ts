@@ -24,10 +24,10 @@ export const fetchSearchBlog = createAsyncThunk<
   BlogInfo[] | undefined,
   RequestOption,
   {rejectValue: string}
->("blog/fetchSearchBlog", async ({search},{rejectWithValue}) => {
+>("blog/fetchSearchBlog", async ({search, limit},{rejectWithValue}) => {
   try {
     const {data} = await axios.get(
-      `https://api.spaceflightnewsapi.net/v3/articles?_title_contains=${search}`);
+      `https://api.spaceflightnewsapi.net/v3/articles?_title_contains=${search}&_limit=${limit}`);
     return data;
   } catch (error) {
     const {message} = error as AxiosError;

@@ -8,11 +8,12 @@ const BlogListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 32px;
   row-gap: 40px;
+  justify-items: center;
   margin: 0 auto;
   ${Media.LG}{
     grid-template-columns: repeat(2, 1fr);
   }
-  ${Media.SM}{
+  ${Media.MD}{
     grid-template-columns: 1fr;
   }
 `;

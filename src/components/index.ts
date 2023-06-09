@@ -14,6 +14,7 @@ import { SignInForm } from "./SignInForm/SignInForm";
 import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { UserAccount } from "./UserAccount/UserAccount";
 import { SwiperSlider } from "./SwiperSlider/SwiperSlider";
+import { SkeletonLoader } from "./SkeletonLoader/SkeletonLoader";
 
 export{
   ToggleButton,
@@ -26,7 +27,8 @@ export{
   SearchForm, 
   SortButtonByDate, 
   SortButtons, 
-  Spinner, 
+  Spinner,
+  SkeletonLoader,
   TabBlog,
   SignInForm,
   SignUpForm,

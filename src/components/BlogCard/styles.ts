@@ -7,6 +7,9 @@ const CardContainer = styled.div`
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
+  ${Media.MD}{
+    max-width: 352px;
+  }
 `;
 
 const BlogImage = styled.img`

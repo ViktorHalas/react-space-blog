@@ -18,10 +18,11 @@ export const fetchHomeBlog = createAsyncThunk<
   BlogInfo[] | undefined,
   RequestOption,
   {rejectValue: string}
->("blog/fetchHomeBlog", async ({blogType,sort},{rejectWithValue}) => {
+>("blog/fetchHomeBlog", async ({blogType,sort,limit},{rejectWithValue}) => {
   try {
     const {data} = await axios.get(
-      `https://api.spaceflightnewsapi.net/v3/${blogType}?_start=0&_limit=9&_sort=${sort}`);
+      // eslint-disable-next-line max-len
+      `https://api.spaceflightnewsapi.net/v3/${blogType}?_limit=${limit}&_sort=${sort}`);
     return data;
   } catch (error) {
     const {message} = error as AxiosError;

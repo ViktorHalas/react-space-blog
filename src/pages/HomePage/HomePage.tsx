@@ -1,7 +1,7 @@
-import { BlogList, TabBlog, SortButtons, CustomSelect } from "components";
+import { BlogList, TabBlog, SortButtons, CustomSelect, SkeletonLoader } from "components";
 import React, { useEffect, useState } from "react";
 import { getBlog, fetchHomeBlog, useAppDispatch, useAppSelector } from "store";
-import { HomePageContainer, TabBlogWrapper, Title } from "./styles";
+import { HomePageContainer, Pagination, StyledList, TabBlogWrapper, Title } from "./styles";
 import { DaysInfo, SelectOption, TabsBlogInfo } from "types";
 import { SingleValue } from "react-select";
 
@@ -34,6 +34,11 @@ export const HomePage = () => {
   const [selectedButton, setSelectedButton] = useState(days[0].id);
   const [sortByDaysValue, setSortByDaysValue] = useState(9999);
   const [option, setOption] = useState(options[0]);
+  const [currentLimit, setCurrentLimit] = useState(12);
+
+  const handleLimit = () => {
+    setCurrentLimit(currentLimit + 12);
+  };
 
   const handleSelect = (option: SingleValue<SelectOption>) => {
     if (option) {
@@ -72,8 +77,8 @@ export const HomePage = () => {
     setSelectedButton((prevId) => (prevId = "4"));
   };
   useEffect(() => {
-    dispatch(fetchHomeBlog({ blogType: currentBlog, sort: option.value }));
-  }, [dispatch, currentBlog, option.value]);
+    dispatch(fetchHomeBlog({ blogType: currentBlog, sort: option.value, limit: currentLimit }));
+  }, [dispatch, currentBlog, option.value, currentLimit]);
   return (
     <HomePageContainer>
       <Title>Blog</Title>
@@ -91,7 +96,20 @@ export const HomePage = () => {
         selectedButton={selectedButton}
       />
       <CustomSelect options={options} onChange={handleSelect} />
-      <BlogList blog={blog} isLoading={isLoading} currentBlog={currentBlog} />
+      {isLoading ? (
+        <StyledList>
+          {[...new Array(12)].map((_, i) => (
+            <SkeletonLoader key={i} />
+          ))}
+        </StyledList>
+      ) : (
+        <BlogList blog={blog} currentBlog={currentBlog} />
+      )}
+      {!isLoading && blog.length >= currentLimit && (
+        <Pagination onClick={handleLimit} type="button">
+          Show more
+        </Pagination>
+      )}
     </HomePageContainer>
   );
 };

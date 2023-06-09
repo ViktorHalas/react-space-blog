@@ -42,7 +42,7 @@ export interface RequestOption {
     blogType?:string | undefined;
     id?:string | undefined ;
     sort?:string;
-    limit?:string;
+    limit?:number;
     start?:string;
     search?:string;
 }

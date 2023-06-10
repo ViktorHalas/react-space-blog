@@ -15,6 +15,9 @@ import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { UserAccount } from "./UserAccount/UserAccount";
 import { SwiperSlider } from "./SwiperSlider/SwiperSlider";
 import { SkeletonLoader } from "./SkeletonLoader/SkeletonLoader";
+import { NavMenu } from "./NavMenu/NavMenu";
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import { ToggleTheme } from "./ToggleTheme/ToggleTheme";
 
 export{
   ToggleButton,
@@ -34,4 +37,7 @@ export{
   SignUpForm,
   SwiperSlider,
   UserAccount,
+  NavMenu,
+  BurgerMenu,
+  ToggleTheme,
 };

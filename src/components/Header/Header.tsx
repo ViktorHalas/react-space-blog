@@ -1,6 +1,6 @@
-import React from "react";
-import { StyledNav, Logo, StyledHeader } from "./styles";
-import { SearchForm, UserAccount } from "components";
+import React, { ChangeEvent } from "react";
+import { Logo, StyledHeader } from "./styles";
+import { BurgerMenu, NavMenu } from "components";
 import { logo } from "assets";
 import { Link } from "react-router-dom";
 import { ROUTE } from "router";
@@ -16,10 +16,8 @@ export const Header = () => {
       <Link to={ROUTE.HOME}>
         <Logo src={logo} />
       </Link>
-      <StyledNav>
-        <SearchForm onClick={setIsActive} />
-        <UserAccount/>
-      </StyledNav>
+      <NavMenu isOpen={isActive} isMobile={isMobile} handleClose={setIsActive}></NavMenu>
+      {isMobile && <BurgerMenu toggleMenu={setIsActive} isActive={isActive} />}
     </StyledHeader>
   );
 };

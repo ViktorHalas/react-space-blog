@@ -50,7 +50,7 @@ export const SearchForm = ({ onClick }: SearchFormProps) => {
           </InputWrapper>
         </StyledForm>
       ) : (
-        <SearchIcon onClick={handleHide}></SearchIcon>
+        <SearchIcon onClick={handleHide} height={"38px"}></SearchIcon>
       )}
     </>
   );

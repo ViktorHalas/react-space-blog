@@ -15,12 +15,12 @@ export const SwiperSlider = ({ blog }: SwiperSlideProps) => {
   return (
     <Swiper
       spaceBetween={50}
-      slidesPerView={1.3}
+      slidesPerView={1.5}
       breakpoints={{
         1024: {
           slidesPerView: 3,
         },
-        568: {
+        768: {
           slidesPerView: 2,
         },
       }}

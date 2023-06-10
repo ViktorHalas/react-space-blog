@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Color } from "ui";
 
 const StyledForm = styled.form`
-  justify-self: center;
   height: 100%;
   width: 100%;
 `;

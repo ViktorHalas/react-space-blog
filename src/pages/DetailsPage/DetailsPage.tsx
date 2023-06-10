@@ -25,7 +25,7 @@ export const DetailsPage = () => {
   }, [dispatch, id, blogType]);
 
   useEffect(() => {
-    dispatch(fetchHomeBlog({ blogType: "articles", sort: "" }));
+    dispatch(fetchHomeBlog({ blogType: "articles", sort: "", limit: 12 }));
   }, [dispatch]);
   return (
     <DetailsPageContainer>

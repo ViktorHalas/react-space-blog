@@ -4,12 +4,16 @@ import { ROUTE } from "router";
 import { getUserInfo, useAppSelector } from "store";
 import { RouterLink, StyledInitials, UserInfo } from "./styles";
 
-export const UserAccount = () => {
+interface UserAccountProps {
+  onClick?: () => void;
+}
+
+export const UserAccount = ({ onClick }: UserAccountProps) => {
   const { isAuth, name } = useAppSelector(getUserInfo);
   return (
     <>
       {isAuth ? (
-        <UserInfo>
+        <UserInfo onClick={onClick}>
           <StyledInitials>
             {name
               .split(" ")
@@ -19,7 +23,7 @@ export const UserAccount = () => {
           <RouterLink to={ROUTE.ACCOUNT}>{name}</RouterLink>
         </UserInfo>
       ) : (
-        <UserInfo>
+        <UserInfo onClick={onClick}>
           <UserIcon />
           <RouterLink to={ROUTE.SIGN_IN}>Sign In</RouterLink>
         </UserInfo>

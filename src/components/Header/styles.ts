@@ -7,6 +7,7 @@ const StyledHeader = styled.div`
   ${Spaces.SP1}
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
   padding: 28px 32px;
   box-sizing: border-box;
@@ -14,17 +15,7 @@ const StyledHeader = styled.div`
   z-index: 10;
 `;
 
-const StyledNav = styled.div`
-  display:grid;
-  grid-template-columns:1fr auto;
-  align-items: center;
-  justify-content: end;
-  gap:20px;
-  width: 100%;
-`;
-
 const Logo = styled.img`
   align-self: center;
 `;
-
-export {StyledHeader, StyledNav, Logo};
+export {StyledHeader, Logo};

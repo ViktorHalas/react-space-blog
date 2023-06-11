@@ -18,6 +18,8 @@ import { SkeletonLoader } from "./SkeletonLoader/SkeletonLoader";
 import { NavMenu } from "./NavMenu/NavMenu";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { ToggleTheme } from "./ToggleTheme/ToggleTheme";
+import { Portal } from "./Portal/Portal";
+import { Modal } from "./Modal/Modal";
 
 export{
   ToggleButton,
@@ -40,4 +42,6 @@ export{
   NavMenu,
   BurgerMenu,
   ToggleTheme,
+  Portal,
+  Modal,
 };

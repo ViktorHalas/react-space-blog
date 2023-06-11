@@ -1,7 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ROUTE } from "router";
-import { fetchSignUpUser, useAppDispatch } from "store";
+import { fetchSignUpUser, getUserInfo, useAppDispatch, useAppSelector } from "store";
 import { Button, Label, RouterLink, Form, Input, InputGroup, Text } from "./styles";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Modal } from "components";
 
 interface RegistrationData {
   userName: string;
@@ -11,7 +14,16 @@ interface RegistrationData {
 }
 
 export const SignUpForm = () => {
+  const { error } = useAppSelector(getUserInfo);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [isActive, setIsActive] = useState(false);
+  const handleCloseModal = () => {
+    setIsActive(false);
+  };
+  const handleNavigate = () => {
+    navigate(ROUTE.HOME);
+  };
   const { register, handleSubmit, reset } = useForm<RegistrationData>({ mode: "onSubmit" });
   const onSubmit: SubmitHandler<RegistrationData> = ({
     userName,
@@ -24,6 +36,9 @@ export const SignUpForm = () => {
         .unwrap()
         .then((response) => {
           reset();
+        })
+        .then(() => {
+          setIsActive(true);
         });
     }
   };
@@ -71,6 +86,10 @@ export const SignUpForm = () => {
         Already have an account?{" "}
         <RouterLink to={`${ROUTE.HOME + ROUTE.SIGN_IN}`}> Sign In</RouterLink>
       </Text>
+      {isActive && !error && (
+        <Modal message="Authorization successful" handleClick={handleNavigate} />
+      )}
+      {isActive && error && <Modal message={error} handleClick={handleCloseModal} />}
     </Form>
   );
 };

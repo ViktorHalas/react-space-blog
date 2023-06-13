@@ -1,4 +1,4 @@
-import { BlogCard, Spinner } from "components";
+import { BlogCard } from "components";
 import React from "react";
 import { generatePath } from "react-router-dom";
 import { ROUTE } from "router";
@@ -7,11 +7,10 @@ import { BlogListContainer, RouterLink } from "./styles";
 
 interface BlogListProps {
   blog: BlogInfo[];
-  sortByDaysValue?: number;
   currentBlog: string;
 }
 
-export const BlogList = ({ blog, sortByDaysValue, currentBlog }: BlogListProps) => {
+export const BlogList = ({ blog, currentBlog }: BlogListProps) => {
   return (
     <>
       <BlogListContainer>

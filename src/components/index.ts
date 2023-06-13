@@ -6,8 +6,6 @@ import { BlogList } from "./BlogList/BlogList";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
 import { Header } from "./Header/Header";
 import { SearchForm } from "./SearchForm/SearchForm";
-import { SortButtonByDate } from "./SortButtonByDate/SortButtonByDate";
-import { SortButtons } from "./SortButtons/SortButtons";
 import { Spinner } from "./Spinner/Spinner";
 import { TabBlog } from "./TabBlog/TabBlog";
 import { SignInForm } from "./SignInForm/SignInForm";
@@ -30,8 +28,6 @@ export{
   CustomSelect, 
   Header, 
   SearchForm, 
-  SortButtonByDate, 
-  SortButtons, 
   Spinner,
   SkeletonLoader,
   TabBlog,

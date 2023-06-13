@@ -10,12 +10,13 @@ interface UserAccountProps {
 
 export const UserAccount = ({ onClick }: UserAccountProps) => {
   const { isAuth, name } = useAppSelector(getUserInfo);
+  const userName = name || "";
   return (
     <>
       {isAuth ? (
         <UserInfo onClick={onClick}>
           <StyledInitials>
-            {name
+            {userName
               .split(" ")
               .map((n: string) => n[0])
               .join("")}

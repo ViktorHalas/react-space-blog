@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
 
 const StyledNav = styled(motion.div)`
   display:grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   justify-content: end;
   gap:20px;
@@ -15,7 +16,7 @@ const StyledNav = styled(motion.div)`
     left: 0;
     z-index: 10;
     grid-template-columns: 1fr;
-    grid-template-rows:repeat(4, auto) 1fr;
+    grid-template-rows:repeat(5, auto) 1fr;
     align-items: center;
     justify-items: center;
     gap: 30px;
@@ -34,7 +35,7 @@ const SearchContainer = styled.div`
   height: 100%;
 `;
 
-const TitleContainer = styled.h3`
+const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,5 +47,15 @@ const Title = styled.h2`
   color: ${Color.PRIMARY_TEXT};
 `;
 
-export {StyledNav, SearchContainer, Title, TitleContainer};
+const FavoritesLink = styled(Link)`
+  ${Typography.H3};
+  color:${Color.PRIMARY_TEXT};
+  text-decoration: none;
+  transition: 0.3s ease;
+  &:hover {
+    color: ${Color.PRIMARY};
+  }
+`;
+
+export {StyledNav, SearchContainer, Title, TitleContainer, FavoritesLink};
 

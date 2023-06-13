@@ -1,7 +1,14 @@
 import { BlogList, TabBlog, CustomSelect, SkeletonLoader } from "components";
 import React, { useEffect, useState } from "react";
 import { getBlog, fetchHomeBlog, useAppDispatch, useAppSelector, setUser } from "store";
-import { HomePageContainer, Pagination, StyledList, TabBlogWrapper, Title } from "./styles";
+import {
+  ButtonsContainer,
+  HomePageContainer,
+  Pagination,
+  StyledList,
+  TabBlogContainer,
+  Title,
+} from "./styles";
 import { SelectOption, TabsBlogInfo } from "types";
 import { SingleValue } from "react-select";
 import { onAuthStateChanged } from "firebase/auth";
@@ -46,18 +53,19 @@ export const HomePage = () => {
     setSelectedTabId((prevId) => (prevId = "2"));
   };
 
-
   useEffect(() => {
     dispatch(fetchHomeBlog({ blogType: currentBlog, sort: option.value, limit: currentLimit }));
   }, [dispatch, currentBlog, option.value, currentLimit]);
   return (
     <HomePageContainer>
       <Title>Blog</Title>
-      <TabBlogWrapper>
-        <TabBlog selectedTabId={selectedTabId} tabs={tabs[0]} onClick={handleArticles} />
-        <TabBlog selectedTabId={selectedTabId} tabs={tabs[1]} onClick={handleBlogs} />
-      </TabBlogWrapper>
-      <CustomSelect options={options} onChange={handleSelect} />
+      <ButtonsContainer>
+        <TabBlogContainer>
+          <TabBlog selectedTabId={selectedTabId} tabs={tabs[0]} onClick={handleArticles} />
+          <TabBlog selectedTabId={selectedTabId} tabs={tabs[1]} onClick={handleBlogs} />
+        </TabBlogContainer>
+        <CustomSelect options={options} onChange={handleSelect} />
+      </ButtonsContainer>
       {isLoading ? (
         <StyledList>
           {[...new Array(12)].map((_, i) => (

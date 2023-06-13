@@ -4,13 +4,15 @@ import { SelectOption } from "types";
 export const selectStyles: StylesConfig<SelectOption> = {
   container: (base) => ({
     ...base,
-    widtg:"300px",
+    maxWidth:"300px",
+    width:"100%",
+    height:"100%",
     outline: "none",
   }),
   control: (base, state) => ({
     ...base,
-    minHeight: "30px",
-    fontSize: "12px",
+    height: "100%",
+    fontSize: "16px",
     fontWeight: "400",
     border: "1px solid #EEEEEE",
     outline: "none",

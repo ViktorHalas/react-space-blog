@@ -8,10 +8,14 @@ const Title = styled.h2`
 `;
 
 const HomePageContainer = styled.div`
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 `;
-const TabBlogWrapper = styled.div``;
+const TabBlogContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+`;
 
 const Pagination = styled.button`
   width: 100%;
@@ -21,7 +25,7 @@ const Pagination = styled.button`
   color: ${Color.PRIMARY_TEXT};
   background-color: ${Color.BLOCK_BG};
   border-color: ${Color.PRIMARY_TEXT};
-  border-radius: 14px;
+  border-radius: 6px;
 `;
 
 const StyledList = styled.div`
@@ -38,4 +42,17 @@ const StyledList = styled.div`
   }
 `;
 
-export {HomePageContainer, TabBlogWrapper, Title, Pagination, StyledList};
+const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  ${Spaces.SP3};
+  border-bottom: 3px solid ${Color.GREY};
+  ${Media.SM}{
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+`;
+
+export {HomePageContainer, TabBlogContainer, Title, Pagination, StyledList, ButtonsContainer};

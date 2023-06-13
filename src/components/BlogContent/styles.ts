@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Color, Media, Spaces, Typography } from "ui";
 
-const BlogContentContainer = styled.div`
+const BlogContentContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -34,9 +35,10 @@ const Summary = styled.p`
 `;
 const OuterLink = styled.a`
   display: block;
-  padding: 16px 32px;
+  padding: 10px 15px;
   width: fit-content;
   ${Typography.H3};
+  line-height: 40px;
   text-decoration: none;
   color: ${Color.PRIMARY_TEXT};
   border: 2px solid ${Color.PRIMARY_TEXT};
@@ -49,8 +51,17 @@ const OuterLink = styled.a`
 `;
 
 const FavoritesButton = styled.button`
-  padding: 10px 20px;
+min-width: 80px;
+  padding: 10px 15px;
   ${Typography.H2};
 `;
 
-export {BlogContentContainer,Title, Image, Summary, OuterLink, FavoritesButton};
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+
+export {BlogContentContainer,Title, Image, Summary, OuterLink, FavoritesButton, ButtonsContainer};

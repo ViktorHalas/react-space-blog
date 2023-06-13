@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Spaces, Typography } from "ui";
 
-const SignInPageContainer = styled.div`
+const SignInPageContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   ${Spaces.SP1};

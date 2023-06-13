@@ -10,9 +10,13 @@ interface BlogListProps {
 
 export const BlogCard = ({ imageUrl, title, publishedAt }: BlogListProps) => {
   const date = new Date(publishedAt).toLocaleDateString();
-  
+
   return (
-    <CardContainer>
+    <CardContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeIn", duration: 0.5 }}
+    >
       <BlogImage src={imageUrl}></BlogImage>
       <TextContainer>
         <PublishedAt>{date}</PublishedAt>

@@ -4,14 +4,21 @@ import { Color, Media, Typography } from "ui";
 const StyledFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: auto;
+  max-width: 1120px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
   padding: 33px;
   border-top:1px solid ${Color.GREY} ;
   ${Media.SM}{
+    padding: 33px 24px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
+  ${Media.XL}{
+      padding: 33px 40px;
+  };
 `;
 
 const Copyright = styled.div`

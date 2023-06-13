@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Color, Media, Spaces, Typography } from "ui";
 
-const CardContainer = styled.div`
+const CardContainer = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   width: 100%;

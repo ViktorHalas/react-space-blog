@@ -1,6 +1,14 @@
 import React from "react";
 import { BlogInfo } from "types";
-import { BlogContentContainer, Title, Image, Summary, OuterLink, FavoritesButton } from "./styles";
+import {
+  BlogContentContainer,
+  Title,
+  Image,
+  Summary,
+  OuterLink,
+  FavoritesButton,
+  ButtonsContainer,
+} from "./styles";
 import { getFavorites, getUserInfo, useAppDispatch, useAppSelector } from "store";
 import { addToFavorites, deleteFromFavorites } from "store/features/favoritesSlice";
 
@@ -27,14 +35,22 @@ export const BlogContent = ({ details, isLoading }: BlogContentProps) => {
     isInFavorites ? handleRemoveFromFavorites(details) : handleAddToFavorites(details);
   };
   return (
-    <BlogContentContainer>
+    <BlogContentContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeIn", duration: 0.5 }}
+    >
       <Title>{title}</Title>
       <Image src={imageUrl} />
       <Summary>{summary}</Summary>
-      <OuterLink href={url}>Learn more</OuterLink>
-      <FavoritesButton onClick={handleChangeFavorites}>
-        {isAuth && isInFavorites ? "⭐" : "✰"}
-      </FavoritesButton>
+      <ButtonsContainer>
+        <OuterLink href={url}>Learn more</OuterLink>
+        {isAuth && (
+          <FavoritesButton onClick={handleChangeFavorites}>
+            {isInFavorites ? "⭐" : "✰"}
+          </FavoritesButton>
+        )}
+      </ButtonsContainer>
     </BlogContentContainer>
   );
 };

@@ -5,7 +5,11 @@ import { RouterLink, SignUpPageContainer, Title } from "./styles";
 
 export const SignUpPage = () => {
   return (
-    <SignUpPageContainer>
+    <SignUpPageContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeIn", duration: 0.5 }}
+    >
       <RouterLink to={ROUTE.HOME}>Back to home</RouterLink>
       <Title>Sign Up</Title>
       <SignUpForm></SignUpForm>

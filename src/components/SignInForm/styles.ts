@@ -81,4 +81,8 @@ const ResetPassword = styled(Link)`
     color: ${Color.PRIMARY};
   }
 `;
-export {Button, Label, RouterLink, Form, Input, InputGroup, Text, ResetPassword};
+const ErrorMessage = styled.p`
+  ${Typography.B2};
+  color: red;
+`;
+export {Button, Label, RouterLink, Form, Input, InputGroup, Text, ResetPassword, ErrorMessage};

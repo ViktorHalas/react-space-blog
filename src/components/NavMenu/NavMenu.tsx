@@ -2,7 +2,6 @@ import { SearchForm, ToggleTheme, UserAccount } from "components";
 import React from "react";
 import { FavoritesLink, SearchContainer, StyledNav, Title, TitleContainer } from "./styles";
 import { BurgerCloseIcon } from "assets";
-import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 
 interface NavMenuProps {

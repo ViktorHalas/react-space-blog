@@ -70,4 +70,8 @@ const Text = styled.span`
   color:${Color.PRIMARY_TEXT};
   text-align: center;
 `;
-export {Button, Label, RouterLink, Form, Input, InputGroup, Text};
+const ErrorMessage = styled.p`
+  ${Typography.B2};
+  color: red;
+`;
+export {Button, Label,ErrorMessage, RouterLink, Form, Input, InputGroup, Text};

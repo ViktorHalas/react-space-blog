@@ -16,7 +16,6 @@ import { auth } from "services";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
-  useEffect(() => onAuthStateChanged(auth, (user) => dispatch(setUser(user))), [dispatch]);
   const tabs: TabsBlogInfo[] = [
     { id: "1", label: "Articles" },
     { id: "2", label: "Blog" },

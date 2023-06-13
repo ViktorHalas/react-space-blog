@@ -1,13 +1,12 @@
 import { Portal } from "components";
-import { memo } from "react";
 import { AuthText, Button, ModalContainer, ModalInformation } from "./styles";
 
-interface IProps {
+interface ModalProps {
   message: string;
   handleClick: () => void;
 }
 
-export const Modal = memo(({ message, handleClick }: IProps) => {
+export const Modal = ({ message, handleClick }: ModalProps) => {
   return (
     <Portal>
       <ModalContainer>
@@ -18,4 +17,4 @@ export const Modal = memo(({ message, handleClick }: IProps) => {
       </ModalContainer>
     </Portal>
   );
-});
+};

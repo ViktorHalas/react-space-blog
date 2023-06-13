@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { Logo, StyledHeader } from "./styles";
 import { BurgerMenu, NavMenu } from "components";
 import { logo } from "assets";

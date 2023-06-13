@@ -9,7 +9,7 @@ import {
   fetchHomeBlog,
 } from "store";
 import { DetailsPageContainer, NavigationLink, Recommendations } from "./styles";
-import { BlogContent, SwiperSlider } from "components";
+import { BlogContent, Spinner, SwiperSlider } from "components";
 import { ROUTE } from "router";
 
 export const DetailsPage = () => {
@@ -28,6 +28,7 @@ export const DetailsPage = () => {
   useEffect(() => {
     dispatch(fetchHomeBlog({ blogType: "articles", sort: "", limit: 12 }));
   }, [dispatch]);
+
   return (
     <DetailsPageContainer>
       <NavigationLink onClick={handleBackHome}>Home / Post {id}</NavigationLink>

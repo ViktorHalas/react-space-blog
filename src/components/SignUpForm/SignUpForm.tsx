@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ROUTE } from "router";
 import { fetchSignUpUser, getUserInfo, useAppDispatch, useAppSelector } from "store";
-import { Button, Label, RouterLink, Form, Input, InputGroup, Text } from "./styles";
+import { Button, Label, RouterLink, Form, Input, InputGroup, Text, ErrorMessage } from "./styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "components";
@@ -24,7 +24,12 @@ export const SignUpForm = () => {
   const handleNavigate = () => {
     navigate(ROUTE.HOME);
   };
-  const { register, handleSubmit, reset } = useForm<RegistrationData>({ mode: "onSubmit" });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<RegistrationData>({ mode: "onSubmit" });
   const onSubmit: SubmitHandler<RegistrationData> = ({
     name,
     email,
@@ -51,12 +56,24 @@ export const SignUpForm = () => {
           <Input
             placeholder="Your Fullname"
             type="text"
-            {...register("name", { required: true, pattern: /^[A-Z][a-z]+ [A-Z][a-z]+$/ })}
+            {...register("name", {
+              required: true,
+              pattern: {
+                value: /^[A-Z][a-z]+ [A-Z][a-z]+$/,
+                message: "enter your fullname",
+              },
+            })}
           />
+          {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
         </Label>
         <Label>
           Email
-          <Input placeholder="Your Email" type="email" {...register("email", { required: true })} />
+          <Input
+            placeholder="Your Email"
+            type="email"
+            {...register("email", { required: "Email is required" })}
+          />
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </Label>
         <Label>
           Password
@@ -68,6 +85,7 @@ export const SignUpForm = () => {
               minLength: { value: 7, message: "Minimum characters 7" },
             })}
           />
+          {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
         </Label>
         <Label>
           Confirm Password

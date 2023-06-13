@@ -8,7 +8,7 @@ import {
   getBlog,
   fetchHomeBlog,
 } from "store";
-import { DetailsPageContainer, NavigationLink } from "./styles";
+import { DetailsPageContainer, NavigationLink, Recommendations } from "./styles";
 import { BlogContent, SwiperSlider } from "components";
 import { ROUTE } from "router";
 
@@ -32,6 +32,7 @@ export const DetailsPage = () => {
     <DetailsPageContainer>
       <NavigationLink onClick={handleBackHome}>Home / Post {id}</NavigationLink>
       <BlogContent details={details} isLoading={isLoading} />
+      <Recommendations>Recommendations</Recommendations>
       <SwiperSlider blog={blog}></SwiperSlider>
     </DetailsPageContainer>
   );

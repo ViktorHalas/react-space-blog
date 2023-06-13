@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Color } from "ui";
+import { Color, Spaces, Typography } from "ui";
 
 const FavoritesWrapper = styled(motion.div)`
   place-self: start center;
@@ -9,7 +9,9 @@ const FavoritesWrapper = styled(motion.div)`
 `;
 
 const Title = styled.h1`
-  text-align: center;
+  ${Spaces.SP3};
+  ${Typography.H1};
+  color: ${Color.PRIMARY_TEXT};
 `;
 
 const NoFavoritesText = styled.p`

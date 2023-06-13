@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Spaces } from "ui";
+import { Color, Spaces, Typography } from "ui";
 
 const DetailsPageContainer = styled.div`
   width: 100%;
@@ -16,4 +16,9 @@ const NavigationLink = styled.div`
   }
 `;
 
-export {NavigationLink,DetailsPageContainer};
+const Recommendations = styled.h2`
+  ${Spaces.SP5};
+  ${Typography.H2};
+`;
+
+export {NavigationLink,DetailsPageContainer, Recommendations};

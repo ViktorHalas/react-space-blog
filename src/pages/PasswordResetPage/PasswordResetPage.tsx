@@ -9,7 +9,11 @@ export const PasswordResetPage = () => {
     navigate(-1);
   };
   return (
-    <ResetPageContainer>
+    <ResetPageContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeIn", duration: 0.5 }}
+    >
       <RouterLink onClick={handleBack}>Back</RouterLink>
       <Title>Reset Password</Title>
       <ResetPasswordForm />

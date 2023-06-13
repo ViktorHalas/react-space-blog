@@ -14,7 +14,13 @@ const Title = styled.h2`
 
 const Pagination = styled.button`
   width: 100%;
+  margin-top: 48px;
+  padding: 10px;
   ${Typography.H3};
+  color: ${Color.PRIMARY_TEXT};
+  background-color: ${Color.BLOCK_BG};
+  border-color: ${Color.PRIMARY_TEXT};
+  border-radius: 6px;
 `;
 
 const StyledList = styled.div`

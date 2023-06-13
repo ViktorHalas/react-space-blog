@@ -28,11 +28,6 @@ export interface TabsBlogInfo {
     label: string;
 };
 
-export interface DaysInfo {
-    id: string;
-    label: string;
-};
-
 export interface SelectOption {
     value: string;
     label: string;

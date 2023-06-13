@@ -3,12 +3,16 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  updateProfile,
+  signOut,
 } from "firebase/auth";
-import { auth } from "services/firebase/firebase";
+import { User } from "firebase/auth";
+import { doc, setDoc} from "firebase/firestore";
+import { auth, db } from "services";
 import { FirebaseErrorCode, FirebaseErrorMessage, getFBErrorMessage } from "utils";
 
 interface UserState {
-  name: string;
+  name: string | null;
   email: string | null;
   id:string;
   isAuth: boolean;
@@ -17,18 +21,20 @@ interface UserState {
 }
 
 interface UserNameEmail {
-  userEmail: string | null;
-  name: string;
+  email: string | null;
+  name: string | null;
+  id: string;
 }
 
 interface UserEmail {
   userEmail: string | null;
+
 }
 
 interface CreateFirebaseAuth {
   email: string;
   password: string;
-  userName: string;
+  name: string;
 }
 
 interface SignInFirebaseAuth {
@@ -48,18 +54,24 @@ const initialState: UserState = {
   error: "",
 };
 
-
 export const fetchSignUpUser = createAsyncThunk<
   UserNameEmail,
   CreateFirebaseAuth,
   { rejectValue: FirebaseErrorMessage }
->("user/signUpUser", async ({ email, password, userName }, { rejectWithValue }) => {
+>("user/signUpUser", async ({ email, password, name }, { rejectWithValue }) => {
   try {
-    const userCredential = createUserWithEmailAndPassword(auth, email, password);
-    const userEmail = (await userCredential).user.email;
-    const name = userName;
-
-    return { userEmail, name };
+    const {user} = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(user, { displayName: name });
+    await setDoc(doc(db, "users", user.uid), {
+      name: user.displayName,
+      email: user.email,
+      id: user.uid,
+    });
+    return {
+      name: user.displayName,
+      email: user.email,
+      id: user.uid,
+    };
   } catch (error) {
     const firebaseError = error as { code: FirebaseErrorCode };
     return rejectWithValue(getFBErrorMessage(firebaseError.code));
@@ -71,7 +83,7 @@ export const fetchSignInUser = createAsyncThunk<
   SignInFirebaseAuth,
   { rejectValue: FirebaseErrorMessage }
 >("user/sigInUser", async ({ email, password }, { rejectWithValue }) => {
-  try {;
+  try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const userEmail = userCredential.user.email;
 
@@ -95,33 +107,47 @@ export const fetchResetPassword = createAsyncThunk<
   }
 });
 
+export const fetchLogOut = createAsyncThunk<void, void, { rejectValue: FirebaseErrorMessage }>(
+  "user/signOut",
+  async (_, { rejectWithValue }) => {
+    try {
+      await signOut(auth);;
+    } catch (error) {
+      const firebaseError = error as { code: FirebaseErrorCode };
+      return rejectWithValue(getFBErrorMessage(firebaseError.code));
+    }
+  },
+);
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    getUserName: (state, { payload }: PayloadAction<string>) => {
-      state.name = payload;
-      state.email = payload;
+    setUser: (state, { payload }: PayloadAction<User | null>) => {
+      if (payload) {
+        state.name = payload.displayName;
+        state.email = payload.email;
+        state.id = payload.uid;
+        state.isAuth = true;
+      }
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchSignUpUser.pending, (state) => {
-      state.isAuth = false;
-      state.error = null;
+    builder.addCase(fetchSignUpUser.pending, (state, action) => {
       state.isLoading = true;
     });
     builder.addCase(fetchSignUpUser.fulfilled, (state, { payload }) => {
-      state.isAuth = true;
-      state.error = null;
-      state.name = payload.name;
-      state.email = payload.userEmail;
-      state.isLoading = true;
+      state.isLoading = false;
+      if (payload) {
+        state.name = payload.name;
+        state.email = payload.email;
+        state.id = payload.id;
+        state.isAuth = true;
+      }
     });
     builder.addCase(fetchSignUpUser.rejected, (state, { payload }) => {
+      state.isLoading = false;
       if (payload) {
-        state.isAuth = false;
         state.error = payload;
-        state.isLoading = false;
       }
     });
 
@@ -149,8 +175,18 @@ const userSlice = createSlice({
         state.error = payload;
       }
     });
+    builder.addCase(fetchLogOut.fulfilled, (state, action) => {
+      state.isAuth = false;
+      state.email = "";
+      state.name = "";
+    });
+    builder.addCase(fetchLogOut.rejected, (state, { payload }) => {
+      if (payload) {
+        state.error = payload;
+      }
+    });
   },
 });
 
 export default userSlice.reducer;
-export const { getUserName } = userSlice.actions;
+export const { setUser } = userSlice.actions;

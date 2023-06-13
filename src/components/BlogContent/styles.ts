@@ -48,4 +48,9 @@ const OuterLink = styled.a`
   }
 `;
 
-export {BlogContentContainer,Title, Image, Summary, OuterLink};
+const FavoritesButton = styled.button`
+  padding: 10px 20px;
+  ${Typography.H2};
+`;
+
+export {BlogContentContainer,Title, Image, Summary, OuterLink, FavoritesButton};

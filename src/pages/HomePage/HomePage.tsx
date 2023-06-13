@@ -1,22 +1,18 @@
-import { BlogList, TabBlog, SortButtons, CustomSelect, SkeletonLoader } from "components";
+import { BlogList, TabBlog, CustomSelect, SkeletonLoader } from "components";
 import React, { useEffect, useState } from "react";
-import { getBlog, fetchHomeBlog, useAppDispatch, useAppSelector } from "store";
+import { getBlog, fetchHomeBlog, useAppDispatch, useAppSelector, setUser } from "store";
 import { HomePageContainer, Pagination, StyledList, TabBlogWrapper, Title } from "./styles";
-import { DaysInfo, SelectOption, TabsBlogInfo } from "types";
+import { SelectOption, TabsBlogInfo } from "types";
 import { SingleValue } from "react-select";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "services";
 
 export const HomePage = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => onAuthStateChanged(auth, (user) => dispatch(setUser(user))), [dispatch]);
   const tabs: TabsBlogInfo[] = [
     { id: "1", label: "Articles" },
     { id: "2", label: "Blog" },
-  ];
-
-  const days: DaysInfo[] = [
-    { id: "0", label: "All" },
-    { id: "1", label: "Day" },
-    { id: "2", label: "Week" },
-    { id: "3", label: "Month" },
-    { id: "4", label: "Year" },
   ];
 
   const options: SelectOption[] = [
@@ -25,14 +21,8 @@ export const HomePage = () => {
     { value: "title:DESC", label: "Title (Z-A)" },
   ];
   const { blog, isLoading } = useAppSelector(getBlog);
-
-  const dispatch = useAppDispatch();
-
   const [currentBlog, setCurrentBlog] = useState<string>("articles");
-
   const [selectedTabId, setSelectedTabId] = useState(tabs[0].id);
-  const [selectedButton, setSelectedButton] = useState(days[0].id);
-  const [sortByDaysValue, setSortByDaysValue] = useState(9999);
   const [option, setOption] = useState(options[0]);
   const [currentLimit, setCurrentLimit] = useState(12);
 
@@ -56,26 +46,7 @@ export const HomePage = () => {
     setSelectedTabId((prevId) => (prevId = "2"));
   };
 
-  const handleAllBlogs = () => {
-    setSortByDaysValue(9999);
-    setSelectedButton((prevId) => (prevId = "0"));
-  };
-  const handleDayValue = () => {
-    setSortByDaysValue(1);
-    setSelectedButton((prevId) => (prevId = "1"));
-  };
-  const handleWeekValue = () => {
-    setSortByDaysValue(7);
-    setSelectedButton((prevId) => (prevId = "2"));
-  };
-  const handleMonthValue = () => {
-    setSortByDaysValue(30);
-    setSelectedButton((prevId) => (prevId = "3"));
-  };
-  const handleYearValue = () => {
-    setSortByDaysValue(365);
-    setSelectedButton((prevId) => (prevId = "4"));
-  };
+
   useEffect(() => {
     dispatch(fetchHomeBlog({ blogType: currentBlog, sort: option.value, limit: currentLimit }));
   }, [dispatch, currentBlog, option.value, currentLimit]);
@@ -86,15 +57,6 @@ export const HomePage = () => {
         <TabBlog selectedTabId={selectedTabId} tabs={tabs[0]} onClick={handleArticles} />
         <TabBlog selectedTabId={selectedTabId} tabs={tabs[1]} onClick={handleBlogs} />
       </TabBlogWrapper>
-      <SortButtons
-        days={days}
-        handleAllBlogs={handleAllBlogs}
-        handleDayValue={handleDayValue}
-        handleWeekValue={handleWeekValue}
-        handleMonthValue={handleMonthValue}
-        handleYearValue={handleYearValue}
-        selectedButton={selectedButton}
-      />
       <CustomSelect options={options} onChange={handleSelect} />
       {isLoading ? (
         <StyledList>

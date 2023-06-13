@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Modal } from "components";
 
 interface RegistrationData {
-  userName: string;
+  name: string;
   email: string;
   password: string;
   passwordConfirm: string;
@@ -26,13 +26,13 @@ export const SignUpForm = () => {
   };
   const { register, handleSubmit, reset } = useForm<RegistrationData>({ mode: "onSubmit" });
   const onSubmit: SubmitHandler<RegistrationData> = ({
-    userName,
+    name,
     email,
     password,
     passwordConfirm,
   }) => {
     if (password === passwordConfirm) {
-      dispatch(fetchSignUpUser({ userName, email, password }))
+      dispatch(fetchSignUpUser({ name, email, password }))
         .unwrap()
         .then((response) => {
           reset();
@@ -51,7 +51,7 @@ export const SignUpForm = () => {
           <Input
             placeholder="Your Fullname"
             type="text"
-            {...register("userName", { required: true, pattern: /^[A-Z][a-z]+ [A-Z][a-z]+$/ })}
+            {...register("name", { required: true, pattern: /^[A-Z][a-z]+ [A-Z][a-z]+$/ })}
           />
         </Label>
         <Label>

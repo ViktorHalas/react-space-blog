@@ -4,6 +4,7 @@ import { getDetails } from "./selectors/detailsSelector";
 import { getSearch } from "./selectors/searchSelector";
 import { getTheme } from "./selectors/themeSelector";
 import { getUserInfo } from "./selectors/userSelector";
+import { getFavorites } from "./selectors/favoritesSelector";
 export * from "./store";
 export * from "./features/blogSlice";
 export * from "./features/themeSlice";
@@ -11,4 +12,13 @@ export * from "./features/detailsSlice";
 export * from "./features/searchSlice";
 export * from "./features/usersSlise";
 
-export {useAppDispatch, useAppSelector, getBlog, getDetails, getSearch,getTheme,getUserInfo};
+export {
+  useAppDispatch,
+  useAppSelector,
+  getBlog,
+  getDetails,
+  getSearch,
+  getTheme,
+  getUserInfo, 
+  getFavorites
+};

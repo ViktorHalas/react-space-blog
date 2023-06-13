@@ -10,6 +10,7 @@ import {
 } from "store";
 import { DetailsPageContainer, NavigationLink } from "./styles";
 import { BlogContent, SwiperSlider } from "components";
+import { ROUTE } from "router";
 
 export const DetailsPage = () => {
   const { details, isLoading, error } = useAppSelector(getDetails);
@@ -18,7 +19,7 @@ export const DetailsPage = () => {
   const { blogType, id } = useParams();
   const navigate = useNavigate();
   const handleBackHome = () => {
-    navigate(-1);
+    navigate(ROUTE.HOME);
   };
   useEffect(() => {
     dispatch(fetchBlogById({ blogType: blogType, id: id }));
